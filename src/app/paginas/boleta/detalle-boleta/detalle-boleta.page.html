@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de Boleta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="boleta">
+    <ion-card-title class="tamano" style="margin-top: 20px; margin-left: 20px;">
+      N° de boleta {{ boleta.id }}
+    </ion-card-title>
+    <br>
+    <ion-card-subtitle class="tamano" style="margin-left: 20px;">
+      Nombre cliente: {{ boleta.nombreCliente }}
+    </ion-card-subtitle>
+    <ion-card-subtitle class="tamano" style="margin-left: 20px;">
+      Tipo de envío: {{ boleta.tipoEnvio }}
+    </ion-card-subtitle>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let producto of boleta.productos">
+          <ion-label>
+            <p style="font-size: 15px;">
+              <strong>{{ producto.nombre }}</strong> (x{{ producto.stock }}): 
+              {{ producto.precio | currency: '$':'symbol':'1.0-0' }} c/u
+              <br>
+              Total: {{ producto.precio * producto.stock | currency: '$':'symbol':'1.0-0' }}
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div style="text-align: right; margin-top: 20px;">
+        <p style="font-size: 20px;">Cantidad total de productos: {{ totalProductos }}</p>
+        <p style="font-size: 24px; font-weight: bold;">
+          Total a pagar: {{ boleta.total | currency: '$':'symbol':'1.0-0' }}
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

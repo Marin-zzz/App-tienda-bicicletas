@@ -1,0 +1,31 @@
+ion-item {
+  margin-bottom: 16px; // Espacio debajo del item
+}
+
+ion-input {
+  margin-left: 10px; // Espacio a la izquierda del input
+}
+
+.imagen-perfil {
+  margin-top: 15px; // Espacio arriba de la imagen
+  margin-bottom: 15px; // Espacio abajo de la imagen
+  display: flex; // Para organizar los elementos
+  justify-content: center; // Centra la imagen horizontalmente
+}
+
+.imagen-container {
+  width: 170px; // Tamaño del contenedor de la imagen
+  height: 170px; // Tamaño del contenedor de la imagen
+  border-radius: 50%; // Hace la imagen redonda
+  overflow: hidden; // Oculta lo que se sale del borde redondo
+  border: 3px solid gray; // Borde blanco alrededor
+  display: flex; // Para organizar los elementos
+  align-items: center; // Centra la imagen verticalmente
+  justify-content: center; // Centra la imagen horizontalmente
+}
+
+.imagen {
+  width: 100%; // La imagen ocupa todo el ancho del contenedor
+  height: 100%; // La imagen ocupa todo el alto del contenedor
+  object-fit: cover; // Ajusta la imagen sin deformarla
+}

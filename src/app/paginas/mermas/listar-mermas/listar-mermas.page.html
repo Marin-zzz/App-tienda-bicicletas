@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listar Mermas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let merma of mermas">
+      <ion-label>
+        <h2>ID Merma: {{ merma.id }}</h2>  <!-- Mostrar la ID de la Merma -->
+        <h3>ID Producto: {{ merma.idProducto }}</h3>
+        <p>Cantidad: {{ merma.cantidad }}</p>
+        <p>Justificación: {{ merma.justificacion }}</p>
+        <p>Estado: {{ merma.estado }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

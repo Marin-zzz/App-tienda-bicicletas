@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listar Trabajadores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar [(ngModel)]="searchTerm" placeholder="Buscar por nombre o RUT" (ionInput)="filtrarTrabajadores()"></ion-searchbar>
+
+  <!-- Lista de trabajadores -->
+  <ion-list>
+    <ion-item *ngFor="let trabajador of trabajadoresFiltrados" lines="full">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="trabajador.imagen" alt="{{ trabajador.nombre }}"></ion-img>
+      </ion-thumbnail>
+
+      <!-- Información del trabajador -->
+      <ion-label>
+        <h2>{{ trabajador.nombre }} {{ trabajador.apellidoPaterno }}</h2>
+        <p>RUT: {{ trabajador.rut }}</p>
+        <p>Puesto: {{ trabajador.puesto }}</p>
+      </ion-label>
+
+      <!-- Botones de acción -->
+      <ion-buttons slot="end">
+        <ion-button (click)="verDetalles(trabajador)">Detalles</ion-button>
+        <ion-button color="success"(click)="editarTrabajador(trabajador)">Editar</ion-button>
+        <ion-button color="danger" (click)="eliminarTrabajador(trabajador)">Eliminar</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listar Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Botón para alternar entre mostrar todos los productos y solo los que tienen stock -->
+  <ion-item lines="none">
+    <ion-label>Filtrar Productos</ion-label>
+    <ion-segment [(ngModel)]="mostrarTodos" (ionChange)="filtrarProductos()">
+      <ion-segment-button [value]="false">
+        Con Stock
+      </ion-segment-button>
+      <ion-segment-button [value]="true">
+        Todos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="cards-container">
+    <ion-card *ngFor="let producto of productos" [routerLink]="['/detalles-producto', producto.id]">
+      <ion-img [src]="producto.imagen"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ producto.nombre }}</ion-card-title>
+        <ion-card-subtitle>{{ producto.categoria }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Precio: ${{ producto.precio.toLocaleString('es-CL', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) }}</p>
+        <p>
+          <ion-text color="{{ producto.stock > 0 ? 'primary' : 'danger' }}">
+            Stock: {{ producto.stock > 0 ? producto.stock : 'No disponible' }}
+          </ion-text>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

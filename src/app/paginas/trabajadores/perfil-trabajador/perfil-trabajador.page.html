@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil del Trabajador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="trabajador; else noTrabajador">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <!-- Imagen del trabajador -->
+          <ion-img style="width: 80%;" [src]="trabajador.imagen" alt="{{ trabajador.nombre }}"></ion-img>
+          <ion-col>
+            <!-- Información del trabajador -->
+            <ion-card-header>
+              <ion-card-title>{{ trabajador.nombre }} {{ trabajador.apellidoPaterno }}</ion-card-title>
+              <ion-card-subtitle>{{ trabajador.puesto }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <p><strong>RUT:</strong> {{ trabajador.rut }}</p>
+              <p><strong>Nombre:</strong> {{ trabajador.nombre }}</p>
+              <p><strong>Apellido Paterno:</strong> {{ trabajador.apellidoPaterno }}</p>
+              <p><strong>Apellido Materno:</strong> {{ trabajador.apellidoMaterno }}</p>
+              <p><strong>Correo:</strong> {{ trabajador.correo }}</p>
+              <p><strong>Tipo:</strong> {{ trabajador.tipo }}</p>
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ng-template #noTrabajador>
+  <ion-text color="danger">
+    <h2>No se encontraron detalles para este trabajador.</h2>
+  </ion-text>
+</ng-template>
+

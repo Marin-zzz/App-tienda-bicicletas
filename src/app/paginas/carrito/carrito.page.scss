@@ -1,0 +1,22 @@
+
+.botones{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.empty-carrito-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  ion-button {
+    margin-left: 0; /* Asegura que el botón esté alineado a la izquierda */
+  }
+  

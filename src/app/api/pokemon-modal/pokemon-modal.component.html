@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar Pokémon</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="buscarPokemon($event)" placeholder="Buscar Pokémon..."></ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let pokemon of filteredPokemonList; let i = index">
+        <ion-col size="4" (click)="seleccionarPokemon(pokemon)">
+          <div class="pokemon-item">
+            <ion-img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}"></ion-img>
+            <ion-label class="pokemon-name">{{ pokemon.name | titlecase }}</ion-label>
+          </div>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

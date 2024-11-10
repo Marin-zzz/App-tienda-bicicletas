@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">ID</ion-label>
+    <ion-input [value]="nuevoProducto.id" readonly></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Nombre</ion-label>
+    <ion-input [(ngModel)]="nuevoProducto.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Categoría</ion-label>
+    <ion-select [(ngModel)]="nuevoProducto.categoria">
+      <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">
+        {{ categoria }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Precio</ion-label>
+    <ion-input type="number" [(ngModel)]="nuevoProducto.precio"></ion-input>
+  </ion-item>
+
+  <!-- Campo para seleccionar la imagen -->
+  <ion-item>
+    <ion-label position="stacked">Imagen</ion-label>
+    <input type="file" (change)="onFileChange($event)" />
+  </ion-item>
+
+  <!-- Vista previa de la imagen seleccionada o el placeholder -->
+  <ion-item>
+    <ion-img [src]="imagenPreview"></ion-img>
+  </ion-item>
+
+  <!-- Campo para ingresar la descripción del producto -->
+  <ion-item>
+    <ion-label position="stacked">Descripción</ion-label>
+    <ion-textarea [(ngModel)]="nuevoProducto.descripcion"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="full" routerDirection="root" (click)="agregarProducto()">Agregar Producto</ion-button>
+</ion-content>

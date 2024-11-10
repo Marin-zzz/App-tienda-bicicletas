@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Trabajador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">RUT (sin puntos y con guion)</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.rut"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Nombre</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Apellido Paterno</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.apellidoPaterno"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Apellido Materno</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.apellidoMaterno"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Correo electronico</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Puesto</ion-label>
+    <ion-input [(ngModel)]="nuevoTrabajador.puesto"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Tipo de Usuario</ion-label>
+    <ion-select [(ngModel)]="nuevoTrabajador.tipo">
+      <ion-select-option *ngFor="let tipo of tipos" [value]="tipo">
+        {{ tipo }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Campo para seleccionar imagen -->
+  <ion-item>
+    <ion-label position="stacked">Imagen</ion-label>
+    <input type="file" (change)="onImageSelected($event)" />
+  </ion-item>
+
+  <!-- Vista previa de la imagen seleccionada -->
+  <ion-item *ngIf="imagenPreview">
+    <ion-img [src]="imagenPreview" style="width: 100px; height: 100px;"></ion-img>
+  </ion-item>
+
+  <ion-button expand="full" (click)="agregarTrabajador()">Agregar Trabajador</ion-button>
+</ion-content>

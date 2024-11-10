@@ -1,0 +1,17 @@
+<ion-list>
+  <ion-item *ngFor="let producto of carrito$ | async">
+    <ion-avatar slot="start">
+      <img [src]="producto.imagen" alt="{{ producto.nombre }}">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ producto.nombre }}</h2>
+      <p>{{ producto.descripcion }}</p>
+      <p>Precio: {{ producto.precio | currency }}</p>
+      <p>Cantidad: {{ producto.stock }}</p>
+    </ion-label>
+    <ion-button (click)="removeFromCarrito(producto.id)" color="danger">Remove</ion-button>
+  </ion-item>
+  <ion-button >Default</ion-button>
+  <ion-button >Default</ion-button>
+  <ion-button >Default</ion-button>
+</ion-list>

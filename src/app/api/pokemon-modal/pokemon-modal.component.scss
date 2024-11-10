@@ -1,0 +1,24 @@
+.pokemon-item {
+  display: flex; // Alinea los elementos en fila o columna
+  flex-direction: column; // Los organiza en columna
+  align-items: center; // Centra el contenido horizontalmente
+  justify-content: center; // Centra el contenido verticalmente
+  width: 100%; // Usa todo el ancho disponible
+  padding: 10px; // Espacio interno
+  margin: 5px; // Espacio entre los items
+  border: 1px solid #ccc; // Borde suave
+  border-radius: 8px; // Bordes redondeados
+  background-color: gray; // Fondo oscuro
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombras para darle profundidad
+  transition: transform 0.2s; // Efecto que hace que cambie de tamaño ligeramente
+}
+
+.pokemon-item:hover {
+  transform: scale(1.05); // Hace el item un poco más grande al pasar el mouse
+}
+
+.pokemon-item img {
+  width: 70px; // Tamaño de la imagen, ajustable
+  height: auto; // Mantiene las proporciones
+  margin-bottom: 5px; // Espacio debajo de la imagen
+}

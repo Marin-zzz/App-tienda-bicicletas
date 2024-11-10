@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listar Guías</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let guia of guias" routerLink="/detalle-guia/{{ guia.numero }}">
+      <ion-label>
+        <h2>Guía N°: {{ guia.numero }}</h2>
+        <p>Fecha: {{ guia.fecha }}</p>
+        <p>Estado: {{ guia.estado }}</p> <!-- Muestra el estado de la guía -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

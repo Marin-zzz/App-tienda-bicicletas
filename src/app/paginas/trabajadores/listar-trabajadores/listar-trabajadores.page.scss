@@ -1,0 +1,37 @@
+ion-header {
+    --ion-toolbar-background: #3880ff; // Color de fondo del header
+    color: white; // Color del texto
+  }
+  
+  ion-content {
+    padding: 10px; // Espaciado interno
+  }
+  
+  ion-item {
+    display: flex;
+    align-items: center; // Centrar verticalmente
+    justify-content: space-between; // Espacio entre elementos
+  }
+  
+  ion-thumbnail {
+    width: 50px; // Ancho de la imagen
+    height: 50px; // Alto de la imagen
+  }
+  
+  ion-label {
+    flex-grow: 1; // Permitir que el label ocupe el espacio disponible
+    margin-left: 10px; // Espaciado a la izquierda
+  }
+  
+  ion-buttons {
+    display: flex;
+    flex-direction: column; // Colocar botones en columna para ahorrar espacio
+    align-items: flex-end; // Alinear botones a la derecha
+  }
+  
+  ion-button {
+    margin-top: 5px; // Espaciado entre botones
+    --padding-start: 10px; // Espaciado horizontal
+    --padding-end: 10px; // Espaciado horizontal
+  }
+  

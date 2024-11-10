@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Página de Pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <!-- Opción de crédito o débito -->
+    <ion-item>
+      <ion-label>Forma de pago</ion-label>
+      <ion-select [(ngModel)]="formaDePago" name="formaDePago" placeholder="Seleccionar">
+        <ion-select-option value="credito">Crédito</ion-select-option>
+        <ion-select-option value="debito">Débito</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Número de tarjeta con espacios cada 4 dígitos -->
+    <ion-item>
+      <ion-label position="stacked">Número de Tarjeta</ion-label>
+      <ion-input
+        type="text"
+        maxlength="19"
+        placeholder="1234 5678 9012 3456"
+        [(ngModel)]="numeroTarjeta"
+        (ionInput)="formatCardNumber()"
+        name="numeroTarjeta"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Nombre del titular -->
+    <ion-item>
+      <ion-label position="stacked">Nombre del Titular</ion-label>
+      <ion-input type="text" placeholder="Nombre completo" [(ngModel)]="nombreTitular" name="nombreTitular"></ion-input>
+    </ion-item>
+
+    <!-- Fecha de Expiración MM/AA -->
+    <ion-item>
+      <ion-label position="stacked">Fecha de Expiración (MM/AA)</ion-label>
+      <ion-input
+        type="text"
+        maxlength="5"
+        placeholder="MM/AA"
+        [(ngModel)]="fechaExpiracion"
+        (ionInput)="formatExpirationDate()"
+        name="fechaExpiracion"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Código de seguridad -->
+    <ion-item>
+      <ion-label position="stacked">Código de Seguridad</ion-label>
+      <ion-input type="text" maxlength="3" placeholder="123" [(ngModel)]="codigoSeguridad" name="codigoSeguridad"></ion-input>
+    </ion-item>
+
+    <!-- Envío o Retiro -->
+    <ion-item>
+      <ion-label>Entrega</ion-label>
+      <ion-select [(ngModel)]="opcionEntrega" name="opcionEntrega" placeholder="Seleccionar">
+        <ion-select-option value="envio">Envío a Casa</ion-select-option>
+        <ion-select-option value="retiro">Retiro en Tienda</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Campos adicionales para Envío a Casa -->
+    <ng-container *ngIf="opcionEntrega === 'envio'">
+      <ion-item>
+        <ion-label position="stacked">Dirección</ion-label>
+        <ion-input type="text" placeholder="Ingrese su dirección" [(ngModel)]="direccion" name="direccion"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Número de Teléfono</ion-label>
+        <ion-input
+          type="text"
+          maxlength="11"
+          pattern="[0-9]*"
+          placeholder="9 1234 5678"
+          [(ngModel)]="telefono"
+          (ionInput)="formatPhoneNumber()"
+          name="telefono"
+        ></ion-input>
+      </ion-item>
+    </ng-container>
+
+    <!-- Botón para proceder -->
+    <ion-button type="button" (click)="procesarPago()">Pagar</ion-button>
+  </form>
+</ion-content>

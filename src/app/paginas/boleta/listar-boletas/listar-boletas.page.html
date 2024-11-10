@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Boletas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let boleta of boletas$ | async" [routerLink]="['/detalle-boleta']" [queryParams]="{ id: boleta.id }">
+      <ion-label>
+        <h2>{{ boleta.nombreCliente }}</h2>
+        <h2>Total: {{ boleta.total | currency: 'CLP' }}</h2>
+        <p>Tipo de Envío: {{ boleta.tipoEnvio }}</p>
+        <p>Fecha de la boleta: {{ boleta.fecha | date: 'dd/MM/yyyy, HH:mm' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

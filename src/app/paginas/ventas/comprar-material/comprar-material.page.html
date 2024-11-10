@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comprar Material</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="realizarCompra()">
+    <ion-item>
+      <ion-label>Seleccionar Proveedor</ion-label>
+      <ion-select [(ngModel)]="proveedorSeleccionado" name="proveedorSeleccionado" (ionChange)="onProveedorSeleccionado()">
+        <ion-select-option *ngFor="let proveedor of proveedores" [value]="proveedor">
+          {{ proveedor.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Mostrar lista de productos si hay un proveedor seleccionado -->
+    <div *ngIf="proveedorSeleccionado">
+      <div *ngFor="let producto of productosSeleccionados; let i = index">
+        <ion-item>
+          <ion-label>Producto {{ i + 1 }}</ion-label>
+          <ion-select [(ngModel)]="productosSeleccionados[i]" name="productosSeleccionados{{ i }}" (ionChange)="onProductoSeleccionado(i, productosSeleccionados[i])">
+            <ion-select-option *ngFor="let producto of proveedorSeleccionado?.productos" [value]="producto">
+              {{ producto.nombre }} ({{ formatCLP(producto.precio) }})
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Precio por unidad: {{ formatCLP(productosSeleccionados[i]?.precio) }}</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cantidad</ion-label>
+          <ion-input [(ngModel)]="cantidadSeleccionada[i]" name="cantidadSeleccionada{{ i }}" type="number" (ionChange)="actualizarTotal(i)"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Total: {{ formatCLP(productosSeleccionados[i]?.total) }}</ion-label>
+        </ion-item>
+
+        <ion-button color="danger" (click)="eliminarProducto(i)">Eliminar</ion-button>
+      </div>
+
+      <ion-button (click)="agregarProducto()">Agregar un producto más</ion-button>
+    </div>
+
+    <!-- Mostrar total de la compra -->
+    <div *ngIf="productosSeleccionados.length > 0">
+      <ion-item>
+        <ion-label>Total compra: {{ formatCLP(totalCompra) }}</ion-label>
+      </ion-item>
+    </div>
+
+    <ion-button type="submit">Comprar</ion-button>
+
+    <!-- Mostrar GIF de congratulaciones si está disponible -->
+    <div *ngIf="gifUrl">
+      <img [src]="gifUrl" alt="Felicitaciones!" />
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+  <ion-label position="floating">Rut de Empresa</ion-label>
+  <ion-input [(ngModel)]="nuevoProveedor.rut"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Nombre de la Empresa</ion-label>
+  <ion-input [(ngModel)]="nuevoProveedor.nombre"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Dirección</ion-label>
+  <ion-input [(ngModel)]="nuevoProveedor.direccion"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Teléfono</ion-label>
+  <ion-input [(ngModel)]="nuevoProveedor.telefono"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Correo</ion-label>
+  <ion-input [(ngModel)]="nuevoProveedor.correo"></ion-input>
+</ion-item>
+
+<!-- Productos -->
+<div *ngFor="let producto of productos; let i = index">
+  <ion-item>
+    <ion-label>Producto {{ i + 1 }}</ion-label>
+    <ion-input [(ngModel)]="producto.nombre" placeholder="Nombre del producto"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Precio por unidad</ion-label>
+    <ion-input [(ngModel)]="producto.precio" type="number" placeholder="Precio por unidad"></ion-input>
+  </ion-item>
+
+  <ion-button color="danger" (click)="eliminarProducto(i)">Eliminar</ion-button>
+</div>
+
+<ion-button (click)="agregarProducto()">Agregar un producto más</ion-button>
+
+<ion-button expand="full" (click)="guardarProveedor()">Guardar</ion-button>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Guías de Despacho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let guia of guias">
+      <ion-label>
+        Número de Guía: {{ guia.numero }}<br>
+        Fecha: {{ guia.fecha }}<br>
+        Estado: {{ guia.estado }}<br>
+        Productos: 
+        <ion-list>
+          <ion-item *ngFor="let item of guia.items">
+            Producto ID: {{ item.productoId }} - Cantidad: {{ item.cantidad }}
+          </ion-item>
+        </ion-list>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

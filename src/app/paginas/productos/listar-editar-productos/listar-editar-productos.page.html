@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Listar Editar Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-item>
+    <ion-label position="floating">Buscar por ID o Nombre</ion-label>
+    <ion-input [(ngModel)]="terminoBusqueda" (ionInput)="filtrarProductos()"></ion-input>
+  </ion-item>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="cards-container">
+    <ion-card *ngFor="let producto of productosFiltrados" [routerLink]="['/editar-producto', producto.id]">
+      <ion-img [src]="producto.imagen"></ion-img>
+      <ion-card-header>
+        <ion-card-title>ID: {{ producto.id }} - {{ producto.nombre }}</ion-card-title>
+        <ion-card-subtitle>{{ producto.categoria }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Precio: {{ producto.precio | currency:'CLP' }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

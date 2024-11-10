@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Validar Guía</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Campo para ingresar el número de guía -->
+  <ion-item>
+    <ion-label position="stacked">Número de Guía</ion-label>
+    <ion-input [(ngModel)]="numeroGuia" placeholder="Ingrese el número de guía"></ion-input>
+  </ion-item>
+
+  <!-- Botón para validar la guía -->
+  <ion-button expand="full" (click)="recibirGuia()" [disabled]="validando">Validar Guía</ion-button>
+
+  <!-- Mensaje de éxito -->
+  <ion-text color="success" *ngIf="mensajeExito">
+    <p>{{ mensajeExito }}</p>
+  </ion-text>
+
+  <!-- Mensaje de error -->
+  <ion-text color="danger" *ngIf="mensajeError">
+    <p>{{ mensajeError }}</p>
+  </ion-text>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestionar Mermas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let merma of mermasPendientes">
+      <ion-label>
+        <h2>ID Merma: {{ merma.id }}</h2>  <!-- Mostrar la ID de la Merma -->
+        <h3>ID Producto: {{ merma.idProducto }}</h3>
+        <p>Cantidad: {{ merma.cantidad }}</p>
+        <p>Justificación: {{ merma.justificacion }}</p>
+      </ion-label>
+      <ion-button (click)="aprobarMerma(merma.id)">Aprobar</ion-button>
+      <ion-button color="danger" (click)="rechazarMerma(merma.id)">Rechazar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

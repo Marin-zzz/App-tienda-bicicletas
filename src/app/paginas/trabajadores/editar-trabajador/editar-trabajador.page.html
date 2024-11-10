@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Trabajador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="guardarCambios()">
+    <div class="image-container" style="text-align: center;">
+      <ion-img [src]="trabajador.imagen" alt="Imagen del trabajador" style="width: 80px; height: 80px; border-radius: 50%;"></ion-img>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" style="margin-top: 10px;" />
+    </div>
+
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input class="campo-form" [(ngModel)]="trabajador.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Paterno</ion-label>
+      <ion-input [(ngModel)]="trabajador.apellidoPaterno" name="apellidoPaterno" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Materno</ion-label>
+      <ion-input [(ngModel)]="trabajador.apellidoMaterno" name="apellidoMaterno" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input [(ngModel)]="trabajador.correo" name="correo" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Puesto</ion-label>
+      <ion-input [(ngModel)]="trabajador.puesto" name="puesto" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo de Usuario</ion-label>
+      <ion-select [(ngModel)]="trabajador.tipo" name="tipo">
+        <ion-select-option value="Bodega">Bodega</ion-select-option>
+        <ion-select-option value="Ventas">Ventas</ion-select-option>
+        <ion-select-option value="Supervisor Bodega">Supervisor Bodega</ion-select-option>
+        <ion-select-option value="Equipo Productos">Equipo Productos</ion-select-option>
+        <ion-select-option value="Recursos Humanos">Recursos Humanos</ion-select-option>
+        <ion-select-option value="Admin">Admin</ion-select-option>
+        <ion-select-option value="Cliente">Cliente</ion-select-option>
+        <ion-select-option value="">Ninguno</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Guardar Cambios</ion-button>
+  </form>
+</ion-content>

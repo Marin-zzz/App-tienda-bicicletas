@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="trabajadorForm" (ngSubmit)="guardarPerfil()">
+    <!-- Mostrar la imagen si está disponible -->
+    <div class="imagen-perfil" *ngIf="trabajadorForm.get('imagen')?.value">
+      <div class="imagen-container">
+        <ion-img class="imagen" [src]="trabajadorForm.get('imagen')?.value" alt="Imagen del trabajador"></ion-img>
+      </div>
+    </div>
+
+    <!-- Campos de perfil -->
+    <ion-item>
+      <ion-label>RUT</ion-label>
+      <ion-input [value]="trabajadorForm.get('rut')?.value" disabled></ion-input>
+    </ion-item>
+
+    <!-- Campo para Nombre (editable) -->
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Apellido Paterno (editable) -->
+    <ion-item>
+      <ion-label>Apellido Paterno</ion-label>
+      <ion-input formControlName="apellidoPaterno"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Apellido Materno (editable) -->
+    <ion-item>
+      <ion-label>Apellido Materno</ion-label>
+      <ion-input formControlName="apellidoMaterno"></ion-input>
+    </ion-item>
+
+    <!-- Campo para Correo (editable) -->
+    <ion-item>
+      <ion-label>Correo electronico</ion-label>
+      <ion-input formControlName="correo"></ion-input>
+    </ion-item>
+
+    <!-- Tipo de usuario (bloqueado) -->
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-input [value]="trabajadorForm.get('tipo')?.value" disabled></ion-input>
+    </ion-item>
+
+    <!-- Campo para Selección de Imagen (Subir desde el dispositivo) -->
+    <ion-item>
+      <ion-label>Imagen</ion-label>
+      <input type="file" (change)="handleFileInput($event)">
+    </ion-item>
+
+    <!-- Botón para abrir el modal de Pokémon -->
+    <ion-item>
+      <ion-label>Seleccionar imagen de un Pokemon (opcional)</ion-label>
+      <ion-button expand="full" (click)="abrirModalPokemon()">Seleccionar Pokémon</ion-button>
+    </ion-item>
+
+    <!-- Botón para guardar cambios -->
+    <ion-button expand="full" type="submit" [disabled]="trabajadorForm.invalid">Guardar</ion-button>
+  </form>
+</ion-content>

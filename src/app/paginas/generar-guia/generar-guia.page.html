@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Generar Guía de Despacho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Número de guía no editable -->
+  <ion-item>
+    <ion-label position="stacked">Número de Guía</ion-label>
+    <ion-input [(ngModel)]="numeroEstimadoGuia" readonly></ion-input>
+  </ion-item>
+
+  <!-- Botón para mostrar el formulario de selección de producto -->
+  <ion-button expand="full" (click)="mostrarFormulario()">Añadir Producto</ion-button>
+
+  <!-- Formulario de selección de producto y cantidad -->
+  <ion-list *ngIf="mostrarFormularioProducto">
+    <ion-item>
+      <ion-label>Producto</ion-label>
+      <ion-select [(ngModel)]="productoSeleccionado">
+        <ion-select-option *ngFor="let producto of productos" [value]="producto">
+          {{ producto.nombre }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="cantidadSeleccionada" style="text-align: center;"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="onAgregarItem()">Añadir a la Guía</ion-button>
+  </ion-list>
+
+  <!-- Listado de productos añadidos -->
+  <ion-list>
+    <ion-item *ngFor="let item of guia.items">
+      <ion-label>
+        Producto: {{ obtenerNombreProducto(item.productoId) }}<br>
+        Cantidad: {{ item.cantidad }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón para procesar la guía -->
+  <ion-button style="margin-top: 30px;" expand="full" (click)="procesarGuia()">Procesar Guía</ion-button>
+
+  <!-- Botón para generar una nueva guía -->
+  <ion-button expand="full" color="secondary" (click)="resetearGuia()">Generar Nueva Guía</ion-button>
+</ion-content>
