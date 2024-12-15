@@ -18,6 +18,7 @@ import { PokemonModalComponent } from './api/pokemon-modal/pokemon-modal.compone
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment'; // Importa el archivo de configuración de Firebase
+import { UsuarioService } from './services/usuario.service'; // Asegúrate de importar el UsuarioService
 
 @NgModule({
   declarations: [
@@ -32,14 +33,14 @@ import { environment } from '../environments/environment'; // Importa el archivo
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    RouterModule,
-    IonicModule
+    RouterModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CarritoService, 
     AuthService,
     BoletaService,
+    UsuarioService, // Agrega el UsuarioService aquí
     provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent],

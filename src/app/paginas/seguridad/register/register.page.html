@@ -9,45 +9,43 @@
     <ion-row>
       <ion-col>
         <!-- Formulario de registro -->
-        <form>
-          <!-- Campo RUT -->
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
           <ion-item>
             <ion-label position="stacked">RUT</ion-label>
-            <ion-input type="text" placeholder="12345678-9"></ion-input>
+            <ion-input formControlName="rut" type="text" placeholder="12345678-9"></ion-input>
           </ion-item>
 
-          <!-- Campo Nombre -->
+          <ion-item>
+            <ion-label position="stacked">Nombre de usuario</ion-label>
+            <ion-input formControlName="usuario" type="text" placeholder="Nombre de usuario en minúscula"></ion-input>
+          </ion-item>
+
           <ion-item>
             <ion-label position="stacked">Nombre</ion-label>
-            <ion-input type="text" placeholder="Juan"></ion-input>
+            <ion-input formControlName="nombre" type="text" placeholder="Juan"></ion-input>
           </ion-item>
 
-          <!-- Campo Apellido Paterno -->
           <ion-item>
             <ion-label position="stacked">Apellido Paterno</ion-label>
-            <ion-input type="text" placeholder="Pérez"></ion-input>
+            <ion-input formControlName="apellidoPaterno" type="text" placeholder="Pérez"></ion-input>
           </ion-item>
 
-          <!-- Campo Apellido Materno -->
           <ion-item>
             <ion-label position="stacked">Apellido Materno</ion-label>
-            <ion-input type="text" placeholder="Gómez"></ion-input>
+            <ion-input formControlName="apellidoMaterno" type="text" placeholder="Gómez"></ion-input>
           </ion-item>
 
-          <!-- Campo Correo Electrónico -->
           <ion-item>
             <ion-label position="stacked">Correo Electrónico</ion-label>
-            <ion-input type="email" placeholder="ejemplo@correo.com"></ion-input>
+            <ion-input formControlName="correo" type="email" placeholder="ejemplo@correo.com"></ion-input>
           </ion-item>
 
-          <!-- Campo Contraseña -->
           <ion-item>
             <ion-label position="stacked">Contraseña</ion-label>
-            <ion-input type="password" placeholder="********"></ion-input>
+            <ion-input formControlName="contrasena" type="password" placeholder="********"></ion-input>
           </ion-item>
 
-          <!-- Botón de registro con alerta -->
-          <ion-button expand="block" (click)="mostrarAlerta()">Registrarse</ion-button>
+          <ion-button expand="full" type="submit" [disabled]="!registerForm.valid">Registrar</ion-button>
         </form>
       </ion-col>
     </ion-row>

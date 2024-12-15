@@ -1,4 +1,4 @@
-// Interfaz que representa un trabajador en el sistema
+// Interfaz que representa un trabajador o usuario en el sistema
 export interface Trabajador {
   imagen: string;  // URL o ruta de la imagen del trabajador
   rut: string;  // RUT del trabajador, utilizado como identificador único
